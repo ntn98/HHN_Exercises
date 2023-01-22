@@ -4,12 +4,16 @@
 
 class DistanceCalculator {
     private:
-        static DistanceCalculator * m_pTheDistance;
         DistanceCalculator() = default;
+        DistanceCalculator(const DistanceCalculator&) = delete;
+        DistanceCalculator& operator=(const DistanceCalculator&) = delete;
+
+        static DistanceCalculator * m_pTheDistance;
 
     public:
-        static DistanceCalculator& GetInstance();
-        double Distance(const Point & from, const Point & to);
+        ~DistanceCalculator() = default;
 
-    static double GetRadians(double d);
+        static  DistanceCalculator* GetInstance();
+        double Distance(const Point & from, const Point & to);
+        static double GetRadians(double d);
 };

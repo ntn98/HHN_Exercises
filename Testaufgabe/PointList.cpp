@@ -7,7 +7,7 @@ PointList::PointList(PointList& orig) {
     Points = orig.Points;
 }
 
-void PointList::Add(Point arg) {
+void PointList::Add(const Point& arg) {
     Points.push_back(arg);
 }
 
@@ -21,11 +21,11 @@ void PointList::Print() {
 
 double PointList::GetDistance() {
     double result = 0;
-    int j = 0;
-    DistanceCalculator calculator = DistanceCalculator::GetInstance();
-    for (int i = 0; i < Points.size(); ++i) {
-        j = i + 1;
-        result += calculator.Distance(Points.at(i), Points.at(j));
+    int j;
+    DistanceCalculator* calculator = DistanceCalculator::GetInstance();
+    for (int i = 1; i < Points.size(); ++i) {
+        j = i - 1;
+        result += calculator->Distance(Points.at(j), Points.at(i));
     }
-    return result/1000;
+    return result;
 }

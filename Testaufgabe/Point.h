@@ -4,7 +4,7 @@
 
 class Point {
     private:
-        double m_latitude, m_longitude;
+        double m_latitude{}, m_longitude{};
         std::string m_name;
     public:
         Point() = default;

@@ -1,13 +1,15 @@
 #include <math.h>
 
 #include "DistanceCalculator.h"
-#include "Point.h"
 
-DistanceCalculator& DistanceCalculator::GetInstance() {
-    if (m_pTheDistance == nullptr) {
+DistanceCalculator* DistanceCalculator::m_pTheDistance = nullptr;
+
+DistanceCalculator* DistanceCalculator::GetInstance() {
+    if (!m_pTheDistance) {
+        delete(m_pTheDistance);
         m_pTheDistance = new DistanceCalculator;
     }
-    return *m_pTheDistance;
+    return m_pTheDistance;
 }
 
 double DistanceCalculator::Distance(const Point & from, const Point & to) {
@@ -18,6 +20,5 @@ double DistanceCalculator::Distance(const Point & from, const Point & to) {
 }
 
 double DistanceCalculator::GetRadians(double d) {
-    double rad = d * M_PI/180;
-    return rad;
+    return d * M_PI/180;
 }

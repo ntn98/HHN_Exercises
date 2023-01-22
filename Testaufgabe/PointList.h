@@ -7,9 +7,9 @@ class PointList {
     private:
         std::vector<Point> Points;
     public:
-        PointList();
+        PointList() = default;
         PointList(PointList& orig);
-        void Add(Point arg);
+        void Add(const Point& arg);
         void Print();
         double GetDistance();
 };
