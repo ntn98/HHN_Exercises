@@ -5,9 +5,11 @@
 
 class PointList {
     private:
-        //vector für Point Pointer
+        std::vector<Point> Points;
     public:
-        PointList() = default;
-        void Add(Point& arg);
+        PointList();
+        PointList(PointList& orig);
+        void Add(Point arg);
         void Print();
+        double GetDistance();
 };

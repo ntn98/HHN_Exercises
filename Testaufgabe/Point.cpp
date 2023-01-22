@@ -2,9 +2,8 @@
 
 #include "Point.h"
 
-Point::Point(double latitude, double longitude, std::string name) {
-    this -> m_latitude = latitude;
-    this -> m_longitude = longitude;
+Point::Point(double latitude, double longitude, const std::string& name):
+m_longitude(longitude), m_latitude(latitude) {
     if (!name.empty()) {
         this -> m_name = name;
     }
@@ -18,11 +17,11 @@ void Point::Set(double latitude, double longitude, std::string name) {
     }
 }
 
-double Point::Latitude() {
+double Point::Latitude() const {
     return m_latitude;
  }
 
-double Point::Longitude() {
+double Point::Longitude() const {
     return m_longitude;
 }
 
